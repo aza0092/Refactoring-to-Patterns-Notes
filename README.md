@@ -6,7 +6,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 - Constructors on a class make it hard to decide which constructor to call
 - The more constructors you have, the easier it is for programmers to choose the wrong one
 - A Creation Method is useful here. A Creation Method is a static or nonstatic method on a class that instantiates new instances of the class
-![CH6-Creation-Methods](./media/CH6-Creation-Methods.JPG]
+![CH6-Creation-Methods](./media/CH6-Creation-Methods.jpg]
 
 ## Strategy:
 - 1. Find Chain Constructor (catch-all constructor)
@@ -72,7 +72,7 @@ private MouseEventHandler mouseEventHandler = new NullMouseEventHandler();
 # CH10: Accumulatation
 ## Use Objects to accumulate information
 - Instead of accumulateing info to a local variable, accumulate results to a Collecting Parameter that gets passed to extracted methods
-![acc](./media/CH10-Accumulation.JPG)
+![acc](./media/CH10-Accumulation.jpg)
 
 ## Strategy:
 - 1. Identify an accumulation method, a method that accumulates information into a result. The result, a local variable, will become a Collecting Parameter. If the result’s type won’t let you iteratively gather data across methods, change its type. For example, Java’s String won’t let you accumulate results across methods, so use a StringBuffer
@@ -101,7 +101,7 @@ class TagNode...
 ```java
 StringBuffer result = new StringBuffer("");
 ```
-- `result += "<" + tagName + " " + attributes + ">";` is extracted to a method:
+  - `result += "<" + tagName + " " + attributes + ">";` is extracted to a method:
 ```java
 private void writeOpenTagTo(StringBuffer result) {
   result.append("<");
@@ -111,12 +111,12 @@ private void writeOpenTagTo(StringBuffer result) {
   result.append(">");
 }
 ```
-- The original code now looks like this:
+  - The original code now looks like this:
 ```java
 StringBuffer result = new StringBuffer("");
 writeOpenTagTo(result);
 ```
-- `result += node.toString();` is extracted to:
+  - `result += node.toString();` is extracted to:
 ```java
 public String toString() {
    StringBuffer result = new StringBuffer("");
@@ -129,7 +129,7 @@ private void appendContentsTo(StringBuffer result) {
    ...
 }
 ```
-- The original code finally becomes:
+  - The original code finally becomes:
 ```java
 private void writeChildrenTo(StringBuffer result) {
    Iterator it = children.iterator();
@@ -145,7 +145,7 @@ private void writeChildrenTo(StringBuffer result) {
 ## Chain Constructors
 - Multiple constructors that contain duplicate code can be refactored to chain constructors
 - This fixes situations like adding new variables to a class and neglecting updating constructors
-![chain](./media/CH11-Chain.JPG)
+![chain](./media/CH11-Chain.jpg)
 
 ## Strategy:
 - 1. Find 2 constructors containing duplicate code. Determine if one can call the other and remove duplicate code from one of them
@@ -190,7 +190,7 @@ public Loan(float notional, float outstanding, int rating, Date expiry) {
    this(new TermROC(), notional, outstanding, rating, expiry, null);
 }
 ```
-- Second constructor can also call the third constructor:
+  - Second constructor can also call the third constructor:
 ```java
 public Loan(float notional, float outstanding, int rating, Date expiry, Date maturity) {
    this(new RevolvingTermROC(), notional, outstanding, rating, expiry, maturity);
