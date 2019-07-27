@@ -20,7 +20,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 # CH9: Protection
 ## Introduce Null Objects
 - If you have conditional logic that checks for null value, refactor it to use a Null Object
-- This benifit removes the need to check whether a field or variable is null by making it possible to always call the field or variable safely
+- This benefit removes the need to check whether a field or variable is null by making it possible to always call the field or variable **safely**
 
 ## Strategy:
 - 1. Create a null object by applying Extract Subclass
@@ -77,7 +77,7 @@ private MouseEventHandler mouseEventHandler = new NullMouseEventHandler();
 ![acc](./media/CH10-Accumulation.jpg)
 
 ## Strategy:
-- 1. Identify an accumulation method, a method that accumulates information into a result. The result, a local variable, will become a Collecting Parameter. If the result’s type won’t let you iteratively gather data across methods, change its type. For example, Java’s String won’t let you accumulate results across methods, so use a StringBuffer
+- 1. Identify an accumulation method, a method that accumulates information into a result. The result, a local variable, will become a Collecting Parameter
 - 2. Extract 
 
 ### Example
