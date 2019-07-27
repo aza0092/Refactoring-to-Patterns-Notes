@@ -7,7 +7,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 - The more constructors you have, the easier it is for programmers to choose the wrong one
 - A Creation Method is useful here. A Creation Method is a static or nonstatic method on a class that instantiates new instances of the class
 
-![CH6-Creation-Methods](./media/CH6-Creation-Methods.jpg]
+![Creation](./media/CH6-Creation-Methods.jpg)
 
 ## Strategy:
 - 1. Find Chain Constructor (catch-all constructor)
