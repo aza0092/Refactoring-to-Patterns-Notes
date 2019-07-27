@@ -2,11 +2,11 @@
 My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky 
 
 # CH6: Creation
-# Replace  constructors with intention-revealing Creation Methods
+## Replace  constructors with intention-revealing Creation Methods
 - Constructors on a class make it hard to decide which constructor to call
 - The more constructors you have, the easier it is for programmers to choose the wrong one
 - A Creation Method is useful here. A Creation Method is a static or nonstatic method on a class that instantiates new instances of the class
-![CH6-Creation-Methods](/media/CH6-Creation-Methods.JPG]
+![CH6-Creation-Methods](./media/CH6-Creation-Methods.JPG]
 
 ## Strategy:
 - 1. Find Chain Constructor (catch-all constructor)
@@ -17,7 +17,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 
 
 # CH9: Protection
-# Introduce Null Objects
+## Introduce Null Objects
 - If you have conditional logic that checks for null value, refactor it to use a Null Object
 - This benifit removes the need to check whether a field or variable is null by making it possible to always call the field or variable safely
 
@@ -32,7 +32,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 if (getState().equals(REQUESTED))  // equality logic with type-unsafe string constant
  setState(PermissionState.CLAIMED);
 ```
-- After(Introducted Null Object):
+- After (Introducted Null Object):
 ```java
 if (getState().equals(PermissionState.REQUESTED))
  setState(PermissionState.CLAIMED);
@@ -48,7 +48,7 @@ public boolean mouseMove(Event event, int x, int y) {
   }
 ```
 - After
-- Created NullMouseEventHandler with appropriate method that addresses null result
+  - Created NullMouseEventHandler with appropriate method that addresses null result
 ```java
 public class NullMouseEventHandler extends MouseEventHandler {
   public NullMouseEventHandler(Context context) {
@@ -69,10 +69,10 @@ private MouseEventHandler mouseEventHandler = new NullMouseEventHandler();
   }
 ```
 
-#CH10: Accumulatation
-# Use Objects to accumulate information
+# CH10: Accumulatation
+## Use Objects to accumulate information
 - Instead of accumulateing info to a local variable, accumulate results to a Collecting Parameter that gets passed to extracted methods
-![acc](/media/CH10-Accumulation.JPG)
+![acc](./media/CH10-Accumulation.JPG)
 
 ## Strategy:
 - 1. Identify an accumulation method, a method that accumulates information into a result. The result, a local variable, will become a Collecting Parameter. If the result’s type won’t let you iteratively gather data across methods, change its type. For example, Java’s String won’t let you accumulate results across methods, so use a StringBuffer
@@ -97,7 +97,7 @@ class TagNode...
    }
 ```
 - After:
-- Used StringBuffer instead of result
+  - Used StringBuffer instead of result
 ```java
 StringBuffer result = new StringBuffer("");
 ```
@@ -142,10 +142,10 @@ private void writeChildrenTo(StringBuffer result) {
 }
 ```
 # CH11: Utilities
-# Chain Constructors
+## Chain Constructors
 - Multiple constructors that contain duplicate code can be refactored to chain constructors
 - This fixes situations like adding new variables to a class and neglecting updating constructors
-![chain](/media/CH11-Chain.JPG)
+![chain](./media/CH11-Chain.JPG)
 
 ## Strategy:
 - 1. Find 2 constructors containing duplicate code. Determine if one can call the other and remove duplicate code from one of them
@@ -184,7 +184,7 @@ public Loan(CapitalStrategy strategy, float notional, float outstanding, int rat
 }
 ```
 - After:
-- First constructor can call the third with a minimum amount of work and no duplication:
+  - First constructor can call the third with a minimum amount of work and no duplication:
 ```java
 public Loan(float notional, float outstanding, int rating, Date expiry) {
    this(new TermROC(), notional, outstanding, rating, expiry, null);
