@@ -6,6 +6,7 @@ My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky
 - Constructors on a class make it hard to decide which constructor to call
 - The more constructors you have, the easier it is for programmers to choose the wrong one
 - A Creation Method is useful here. A Creation Method is a static or nonstatic method on a class that instantiates new instances of the class
+
 ![CH6-Creation-Methods](./media/CH6-Creation-Methods.jpg]
 
 ## Strategy:
@@ -63,15 +64,16 @@ public class NullMouseEventHandler extends MouseEventHandler {
 ```java
 private MouseEventHandler mouseEventHandler = new NullMouseEventHandler();
   public boolean mouseMove(Event event, int x, int y) {
-    ~~if (mouseEventHandler != null)~~
+    if (mouseEventHandler != null)
       return mouseEventHandler.mouseMove(graphicsContext, event, x, y );
-    ~~return true;~~
+    return true;
   }
 ```
 
 # CH10: Accumulatation
 ## Use Objects to accumulate information
 - Instead of accumulateing info to a local variable, accumulate results to a Collecting Parameter that gets passed to extracted methods
+
 ![acc](./media/CH10-Accumulation.jpg)
 
 ## Strategy:
@@ -135,16 +137,17 @@ private void writeChildrenTo(StringBuffer result) {
    Iterator it = children.iterator();
    while (it.hasNext()) {
       TagNode node = (TagNode)it.next();
-      **node.appendContentsTo(result);**
+      node.appendContentsTo(result);
    }
    if (!value.equals(""))
-      **result.append(value);**
+      result.append(value);
 }
 ```
 # CH11: Utilities
 ## Chain Constructors
 - Multiple constructors that contain duplicate code can be refactored to chain constructors
 - This fixes situations like adding new variables to a class and neglecting updating constructors
+
 ![chain](./media/CH11-Chain.jpg)
 
 ## Strategy:
