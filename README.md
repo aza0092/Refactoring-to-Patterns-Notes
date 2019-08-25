@@ -1,6 +1,8 @@
 # Refactoring to Patterns Notes
 My personal notes from: 'Refactoring to Patterns' by Joshua Kerievsky 
 
+More condensed guide can be found here: https://industriallogic.com/xp/refactoring/catalog.html
+
 # CH6: Creation
 ## Replace  constructors with intention-revealing Creation Methods
 - Constructors on a class make it hard to decide which constructor to call
